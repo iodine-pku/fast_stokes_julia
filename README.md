@@ -4,18 +4,13 @@
 The Stokes equation is a system of elliptic partial differential equations that describe the motion of a viscous fluid. It is a linear simplification of the nonlinear Navier-Stokes equations, and is used to model the flow of fluids of very low Reynolds number.
 
 The 2d Stokes equation is given by
-$$
-\begin{aligned}
-& \begin{aligned}
--\Delta \vec{u}+\nabla p & =\vec{F}, & & \quad (x, y) \in(0,1) \times(0,1) \\
-\operatorname{div} \vec{u} & =0, & & \quad (x, y) \in(0,1) \times(0,1)
-\end{aligned} \\
+$$-\Delta \vec{u} + \nabla p  = \vec{F},  (x, y) \in (0,1) \times (0,1),$$
+$$\text{div} \vec{u}  = 0,  (x, y) \in (0,1) \times (0,1).$$
 
-& \frac{\partial u}{\partial n}=b, \quad y=0, \quad \frac{\partial u}{\partial n}=t, \quad y=1, \\
-& \frac{\partial v}{\partial n}=l, \quad x=0, \quad \frac{\partial v}{\partial n}=r, \quad x=1, \\
-& u=0, \quad x=0,1, \quad v=0, \quad y=0,1, \\
-\end{aligned}
-$$
+$$\frac{\partial u}{\partial \vec{n}} = b, \quad y = 0, \quad \frac{\partial u}{\partial \vec{n}} = t, \quad y = 1,$$
+$$\frac{\partial v}{\partial \vec{n}} = l, \quad x = 0, \quad \frac{\partial v}{\partial \vec{n}} = r, \quad x = 1,$$
+$$u = 0, \quad x = 0, 1, \quad v = 0, \quad y = 0, 1.$$
+
 Using MAC scheme (See [2] for more details), the equation can be discretized as
 $$
 \left(\begin{array}{cc}
@@ -176,10 +171,10 @@ The reported error will be the $L^2$ norm of the difference between the numerica
 
 ## Uzawa Iteration
 For Uzawa iteration
-$$
+$
 AU = F - BP
 P \leftarrow P + \alpha (B^T U - F)
-$$
+$
 [3] recommends taking $\alpha = 1.0$ and proved convergence. We will use this value throughout the project.
 
 ## V-cycle Multigrid 
@@ -265,9 +260,9 @@ Different from above problem, using Inexact Uzawa method with subproblem solver 
 - $2$ vcycles for preconditioning;
 
 - $\tau = 10^{-5}$ and $k_{max} = 5$ for subproblem $AU = F - BP$ where terminal condition is $k > k_max$ or 
-$$
+$
 \lVert AU- F + BP \rVert  < \tau \lVert B^TU \rVert 
-$$
+$
 
 ### CPU time and iterations
 | n            	| 64       	| 128       	| 256        	| 512     	| 1024    	| 2048     	|
@@ -280,9 +275,9 @@ $$
 ### Remark
 - We can see that the efficiency is similar to directly using v-cycle multigrid method. The use of vcycle preconditioner significantly reduces the number of iterations of PCG (from hundreds of to only $5$).
 - The criterion 
-$$
+$
 \lVert AU- F + BP \rVert  < \tau \lVert B^TU \rVert 
-$$
+$
 may be useful for proving theoretical convergence, but it is not very useful for practical use. For the last (few) uzawa iterations, the right hand side of the inequality is very small, making it very hard to satisfy. 
 - However, if the subproblem of inexact uzawa has too large error, the method will not converge.
 
