@@ -5,10 +5,13 @@ The Stokes equation is a system of elliptic partial differential equations that 
 
 The 2d Stokes equation is given by
 $$-\Delta \vec{u} + \nabla p  = \vec{F},  (x, y) \in (0,1) \times (0,1),$$
-$$\text{div} \vec{u}  = 0,  (x, y) \in (0,1) \times (0,1).$$
+
+$$\text{div} \  \vec{u}  = 0,  (x, y) \in (0,1) \times (0,1).$$
 
 $$\frac{\partial u}{\partial \vec{n}} = b, \quad y = 0, \quad \frac{\partial u}{\partial \vec{n}} = t, \quad y = 1,$$
+
 $$\frac{\partial v}{\partial \vec{n}} = l, \quad x = 0, \quad \frac{\partial v}{\partial \vec{n}} = r, \quad x = 1,$$
+
 $$u = 0, \quad x = 0, 1, \quad v = 0, \quad y = 0, 1.$$
 
 Using MAC scheme (See [2] for more details), the equation can be discretized as
@@ -25,19 +28,19 @@ F \\
 \end{array}\right) .
 $$
 For a numerical test used in this project, the source term $\vec{F} = (f, g)$ is given by
-$$ f(x, y) = =4 \pi^2 (2 \cos(2 \pi x) - 1) \sin(2 \pi y) + x^2 $$
-$$ g(x, y) = 4 \pi^2 (2 \cos(2 \pi y) - 1) \sin(2 \pi x). $$
+$$f(x, y) =4 \pi^2 (2 \cos(2 \pi x) - 1) \sin(2 \pi y) + x^2,$$
+$$g(x, y) = 4 \pi^2 (2 \cos(2 \pi y) - 1) \sin(2 \pi x).$$
 
 The boundary condition is given by
-$$ b(x) = 2 \pi (\cos(2 \pi x) -1), $$
-$$ t(x) = 4 \pi \sin^2( \pi x), $$
-$$ l(y) = 4 \pi \sin^2( \pi y), $$
-$$ r(y) = 2 \pi (\cos(2 \pi y) -1). $$
+$$b(x) = 2 \pi (\cos(2 \pi x) -1),$$
+$$t(x) = 4 \pi \sin^2( \pi x),$$
+$$l(y) = 4 \pi \sin^2( \pi y),$$
+$$r(y) = 2 \pi (\cos(2 \pi y) -1).$$
 
 The exact solution is given by
-$$ u(x, y) = (1 - \cos(2 \pi x)) \sin(2 \pi y), $$
-$$ v(x, y) = (1 - \cos(2 \pi y)) \sin(2 \pi x), $$
-$$ p(x,y) = \frac{x^3}{3} + c. $$
+$$u(x, y) = (1 - \cos(2 \pi x)) \sin(2 \pi y),$$
+$$v(x, y) = (1 - \cos(2 \pi y)) \sin(2 \pi x),$$
+$$p(x,y) = \frac{x^3}{3} + c.$$
 where $c$ is a constant.
 
 
@@ -240,7 +243,7 @@ Different from above problem, using Inexact Uzawa method with subproblem solver 
 - $2$ vcycles for preconditioning;
 
 - $\tau = 10^{-5}$ and $k_{max} = 5$ for subproblem $AU = F - BP$ where terminal condition is $k > k_{max}$ or 
-$$ \lVert AU- F + BP \rVert  < \tau \lVert B^TU \rVert $$
+$\lVert AU- F + BP \rVert  < \tau \lVert B^TU \rVert.$
 
 ### CPU time and iterations
 | n            	| 64       	| 128       	| 256        	| 512     	| 1024    	| 2048     	|
