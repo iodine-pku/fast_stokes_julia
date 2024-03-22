@@ -16,16 +16,20 @@ $$u = 0, \quad x = 0, 1, \quad v = 0, \quad y = 0, 1.$$
 
 Using MAC scheme (See [2] for more details), the equation can be discretized as
 $$
-\left(\begin{array}{cc}
+\begin{pmatrix}
 A & B \\
 B^T & 0
-\end{array}\right)\left(\begin{array}{l}
+\end{pmatrix}
+\begin{pmatrix}
 U \\
 P
-\end{array}\right)=\left(\begin{array}{l}
+\end{pmatrix}
+=
+\begin{pmatrix}
 F \\
 0
-\end{array}\right) .
+\end{pmatrix}
+.
 $$
 For a numerical test used in this project, the source term $\vec{F} = (f, g)$ is given by
 $$f(x, y) =4 \pi^2 (2 \cos(2 \pi x) - 1) \sin(2 \pi y) + x^2,$$
@@ -156,8 +160,8 @@ The reported error will be the $L^2$ norm of the difference between the numerica
 
 ## Uzawa Iteration
 For Uzawa iteration
-$$ AU = F - BP $$
-$$ P \leftarrow P + \alpha (B^T U - F) $$
+$$AU = F - BP$$
+$$P \leftarrow P + \alpha (B^T U - F)$$
 [3] recommends taking $\alpha = 1.0$ and proved convergence. We will use this value throughout the project.
 
 ## V-cycle Multigrid 
