@@ -19,16 +19,16 @@ Using MAC scheme (See [2] for more details), the equation can be discretized as
 ```math
 \begin{pmatrix}
 A & B \\
-B^T & 0 \\
+B^T & 0 
 \end{pmatrix}
 \begin{pmatrix}
 U \\
-P \\
+P 
 \end{pmatrix}
 =
 \begin{pmatrix}
 F \\
-0 \\
+0 
 \end{pmatrix}.
 ``` 
 
