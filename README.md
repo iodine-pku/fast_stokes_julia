@@ -15,22 +15,24 @@ $$\frac{\partial v}{\partial \vec{n}} = l, \quad x = 0, \quad \frac{\partial v}{
 $$u = 0, \quad x = 0, 1, \quad v = 0, \quad y = 0, 1.$$
 
 Using MAC scheme (See [2] for more details), the equation can be discretized as
+
 $$
 \begin{pmatrix}
-A & B \\
+A & B \\\
 B^T & 0
 \end{pmatrix}
 \begin{pmatrix}
-U \\
+U \\\
 P
 \end{pmatrix}
 =
 \begin{pmatrix}
-F \\
+F \\\
 0
 \end{pmatrix}
 .
 $$
+
 For a numerical test used in this project, the source term $\vec{F} = (f, g)$ is given by
 $$f(x, y) =4 \pi^2 (2 \cos(2 \pi x) - 1) \sin(2 \pi y) + x^2,$$
 $$g(x, y) = 4 \pi^2 (2 \cos(2 \pi y) - 1) \sin(2 \pi x).$$
