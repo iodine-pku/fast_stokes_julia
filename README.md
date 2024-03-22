@@ -25,37 +25,19 @@ F \\
 \end{array}\right) .
 $$
 For a numerical test used in this project, the source term $\vec{F} = (f, g)$ is given by
-$$
-f(x, y) = =4 \pi^2 (2 \cos(2 \pi x) - 1) \sin(2 \pi y) + x^2
-$$
-$$
-g(x, y) = 4 \pi^2 (2 \cos(2 \pi y) - 1) \sin(2 \pi x).
-$$
+$$ f(x, y) = =4 \pi^2 (2 \cos(2 \pi x) - 1) \sin(2 \pi y) + x^2 $$
+$$ g(x, y) = 4 \pi^2 (2 \cos(2 \pi y) - 1) \sin(2 \pi x). $$
 
 The boundary condition is given by
-$$
-b(x) = 2 \pi (\cos(2 \pi x) -1)
-$$
-$$
-t(x) = 4 \pi \sin^2( \pi x)
-$$
-$$
-l(y) = 4 \pi \sin^2( \pi y)
-$$
-$$
-r(y) = 2 \pi (\cos(2 \pi y) -1).
-$$
+$$ b(x) = 2 \pi (\cos(2 \pi x) -1), $$
+$$ t(x) = 4 \pi \sin^2( \pi x), $$
+$$ l(y) = 4 \pi \sin^2( \pi y), $$
+$$ r(y) = 2 \pi (\cos(2 \pi y) -1). $$
 
 The exact solution is given by
-$$
-u(x, y) = (1 - \cos(2 \pi x)) \sin(2 \pi y)
-$$
-$$
-v(x, y) = (1 - \cos(2 \pi y)) \sin(2 \pi x)
-$$
-$$
-p(x,y) = \frac{x^3}{3} + c
-$$
+$$ u(x, y) = (1 - \cos(2 \pi x)) \sin(2 \pi y), $$
+$$ v(x, y) = (1 - \cos(2 \pi y)) \sin(2 \pi x), $$
+$$ p(x,y) = \frac{x^3}{3} + c. $$
 where $c$ is a constant.
 
 
@@ -171,10 +153,8 @@ The reported error will be the $L^2$ norm of the difference between the numerica
 
 ## Uzawa Iteration
 For Uzawa iteration
-$
-AU = F - BP
-P \leftarrow P + \alpha (B^T U - F)
-$
+$$ AU = F - BP $$
+$$ P \leftarrow P + \alpha (B^T U - F) $$
 [3] recommends taking $\alpha = 1.0$ and proved convergence. We will use this value throughout the project.
 
 ## V-cycle Multigrid 
@@ -259,10 +239,8 @@ Different from above problem, using Inexact Uzawa method with subproblem solver 
 
 - $2$ vcycles for preconditioning;
 
-- $\tau = 10^{-5}$ and $k_{max} = 5$ for subproblem $AU = F - BP$ where terminal condition is $k > k_max$ or 
-$
-\lVert AU- F + BP \rVert  < \tau \lVert B^TU \rVert 
-$
+- $\tau = 10^{-5}$ and $k_{max} = 5$ for subproblem $AU = F - BP$ where terminal condition is $k > k_{max}$ or 
+$$ \lVert AU- F + BP \rVert  < \tau \lVert B^TU \rVert $$
 
 ### CPU time and iterations
 | n            	| 64       	| 128       	| 256        	| 512     	| 1024    	| 2048     	|
@@ -275,9 +253,7 @@ $
 ### Remark
 - We can see that the efficiency is similar to directly using v-cycle multigrid method. The use of vcycle preconditioner significantly reduces the number of iterations of PCG (from hundreds of to only $5$).
 - The criterion 
-$
-\lVert AU- F + BP \rVert  < \tau \lVert B^TU \rVert 
-$
+$\lVert AU- F + BP \rVert  < \tau \lVert B^TU \rVert$
 may be useful for proving theoretical convergence, but it is not very useful for practical use. For the last (few) uzawa iterations, the right hand side of the inequality is very small, making it very hard to satisfy. 
 - However, if the subproblem of inexact uzawa has too large error, the method will not converge.
 
