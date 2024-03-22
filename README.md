@@ -18,17 +18,17 @@ Using MAC scheme (See [2] for more details), the equation can be discretized as
 
 $$
 \begin{pmatrix}
-A & B \\\
-B^T & 0
+A & B \\
+B^T & 0 \\
 \end{pmatrix}
 \begin{pmatrix}
-U \\\
-P
+U \\
+P \\
 \end{pmatrix}
 =
 \begin{pmatrix}
-F \\\
-0
+F \\
+0 \\
 \end{pmatrix}
 .
 $$
